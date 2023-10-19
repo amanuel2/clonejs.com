@@ -32,6 +32,7 @@ export const MediaRoom = ({ chatId, video, name, audio }: MediaRoomProps) => {
   // }, [isLoading, user, router]);
 
   useEffect(() => {
+    console.log("USER IN QUESTION");
     console.log(user);
 
     if (!user?.firstName || !user?.lastName) return;
