@@ -19,17 +19,27 @@ interface MediaRoomProps {
 }
 
 export const MediaRoom = ({ chatId, video, name, audio }: MediaRoomProps) => {
-  // const { user } = useUser();
+  const { user, isLoaded } = useUser();
   const [token, setToken] = useState("");
+  // useEffect(() => {
+  //   if (!isLoading) {
+  //     if (user) {
+  //       callback();
+  //     } else {
+  //       router.replace("/login");
+  //     }
+  //   }
+  // }, [isLoading, user, router]);
+
   useEffect(() => {
-    // console.log(user);
+    console.log(user);
 
-    // if (!user?.firstName || !user?.lastName) return;
+    if (!user?.firstName || !user?.lastName) return;
 
-    // const name = `${user.firstName} ${user.lastName}`;
+    const name = `${user.firstName} ${user.lastName}`;
     (async () => {
       try {
-        console.log("PRE FETCHING");
+        console.log("PRE FETCHING" + isLoaded);
         const resp = await fetch(
           `/api/livekit?room=${chatId}&username=${name}`
         );
@@ -40,7 +50,7 @@ export const MediaRoom = ({ chatId, video, name, audio }: MediaRoomProps) => {
         console.warn(e);
       }
     })();
-  }, []);
+  }, [isLoaded, user]);
 
   if (token === "") {
     return (
