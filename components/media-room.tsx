@@ -21,16 +21,6 @@ interface MediaRoomProps {
 export const MediaRoom = ({ chatId, video, name, audio }: MediaRoomProps) => {
   const { user, isLoaded } = useUser();
   const [token, setToken] = useState("");
-  // useEffect(() => {
-  //   if (!isLoading) {
-  //     if (user) {
-  //       callback();
-  //     } else {
-  //       router.replace("/login");
-  //     }
-  //   }
-  // }, [isLoading, user, router]);
-
   useEffect(() => {
     console.log("USER IN QUESTION");
     console.log(user);
