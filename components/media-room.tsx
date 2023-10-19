@@ -35,9 +35,9 @@ export const MediaRoom = ({ chatId, video, name, audio }: MediaRoomProps) => {
     console.log("USER IN QUESTION");
     console.log(user);
 
-    if (!user?.firstName || !user?.lastName) return;
+    if (!user?.id) return;
 
-    const name = `${user.firstName} ${user.lastName}`;
+    const name = `${user.id}`;
     (async () => {
       try {
         console.log("PRE FETCHING" + isLoaded);
