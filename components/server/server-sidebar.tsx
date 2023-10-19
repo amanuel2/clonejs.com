@@ -140,6 +140,46 @@ async function ServerSidebar({ serverId }: ServerSidebarProps) {
         <div className="mt-2">
           <ServerSearch
             data={[
+              {
+                label: "Text Channels",
+                type: "channel",
+                data: textChannels?.map((channel) => ({
+                  id: channel.id,
+                  name: channel.name,
+                  icon: channelIconMap[channel.type],
+                })),
+              },
+              {
+                label: "Voice Channels",
+                type: "channel",
+                data: audioChannels?.map((channel) => ({
+                  id: channel.id,
+                  name: channel.name,
+                  icon: channelIconMap[channel.type],
+                })),
+              },
+              {
+                label: "Video Channels",
+                type: "channel",
+                data: videoChannels?.map((channel) => ({
+                  id: channel.id,
+                  name: channel.name,
+                  icon: channelIconMap[channel.type],
+                })),
+              },
+              {
+                label: "Members",
+                type: "member",
+                data: members?.map((member) => ({
+                  id: member.id,
+                  name: member.profile.name,
+                  icon: memberIconMap[member.role],
+                })),
+              },
+            ]}
+          />
+          {/* <ServerSearch
+            data={[
               // @ts-ignore
               ...allChannels.map(({ label, data }) => ({
                 label: label,
@@ -160,7 +200,7 @@ async function ServerSidebar({ serverId }: ServerSidebarProps) {
                 })),
               },
             ]}
-          />
+          /> */}
         </div>
         <Separator className="bg-zinc-200 dark:bg-zinc-700 rounded-md my-2" />
         {/* {allChannels.map(({ label, sectionType, type, data }, i) => (
